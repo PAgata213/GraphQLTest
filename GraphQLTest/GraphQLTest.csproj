@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GraphQLTest.Client\GraphQLTest.Client.csproj" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="15.0.0-p.10" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.0.0-p.10" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0-rc.2.24474.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.2.24474.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0-rc.2.24474.1">

@@ -1,6 +1,6 @@
 using GraphQLTest.Components;
 using GraphQLTest.Context;
-
+using GraphQLTest.GraphQL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,13 @@ builder.Services.AddDbContext<AppDbContext>(o =>
 	o.UseNpgsql(builder.Configuration.GetConnectionString("GraphQLDB"));
 });
 
+builder.Services
+    .AddGraphQLServer()
+    .AddQueryType<QueryProvider>()
+    .AddFiltering()
+    .AddSorting()
+    .AddProjections();  // Mo¿liwe projekcje danych, np. selekcje tylko niektórych pól
+
 var app = builder.Build();
 
 using(var scope = app.Services.CreateScope())
@@ -27,6 +34,7 @@ using(var scope = app.Services.CreateScope())
 	}
 }
 
+
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment())
 {
@@ -36,6 +44,8 @@ else
 {
 	app.UseExceptionHandler("/Error", createScopeForErrors: true);
 }
+
+app.MapGraphQL("/graphql");
 
 app.UseAntiforgery();
 
