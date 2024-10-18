@@ -1,0 +1,39 @@
+services:
+  graphqltest:
+    image: ${DOCKER_REGISTRY-}graphqltest
+    build:
+      context: .
+      dockerfile: GraphQLTest/Dockerfile
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    networks:
+      - inner-network
+
+  postgresql:
+    image: postgres:latest
+    container_name: postgres-node
+    environment:
+      - PGUSER=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: unless-stopped
+    networks:
+      - inner-network
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+ 
+networks:
+  inner-network:
+    name: inner-network
+
+volumes:
+  db-data:
+    driver: local
