@@ -5,7 +5,7 @@ namespace GraphQLTest.GraphQL;
 
 public class QueryProvider
 {
-	[UsePaging]
+	//[UsePaging]
 	[UseProjection]
 	[UseFiltering]
 	[UseSorting]
@@ -16,7 +16,7 @@ public class QueryProvider
 		return dbContext.Posts.Find(id);
 	}
 
-	[UsePaging]
+	//[UsePaging]
 	[UseProjection]
 	[UseFiltering]
 	[UseSorting]

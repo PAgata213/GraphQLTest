@@ -1,3 +1,4 @@
+using GraphQLTest.Client.GraphQL;
 using GraphQLTest.Components;
 using GraphQLTest.Context;
 using GraphQLTest.GraphQL;
@@ -33,7 +34,6 @@ using(var scope = app.Services.CreateScope())
 		await SeedData.SeedDataToDBAsync(dbContext);
 	}
 }
-
 
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment())

@@ -1,0 +1,17 @@
+﻿@using GraphQLTest.Client.GraphQL
+@using GraphQLTest.Shared.Models
+@rendermode @(new InteractiveWebAssemblyRenderMode(false))
+
+@page "/posts"
+<PageTitle>Posts</PageTitle>
+
+<h3>Posts</h3>
+
+@code {
+  IList<Post> _posts = [];
+
+  protected override async Task OnInitializedAsync()
+  {
+    _posts = await _postsService.GetPostsAsync();
+  }
+}
