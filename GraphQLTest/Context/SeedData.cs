@@ -1,4 +1,4 @@
-﻿using GraphQLTest.Models;
+﻿using GraphQLTest.Shared.Models;
 
 namespace GraphQLTest.Context;
 

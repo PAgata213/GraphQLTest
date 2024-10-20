@@ -1,4 +1,4 @@
-﻿using GraphQLTest.Models;
+﻿using GraphQLTest.Shared.Models;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

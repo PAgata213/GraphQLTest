@@ -1,4 +1,4 @@
-﻿namespace GraphQLTest.Models;
+﻿namespace GraphQLTest.Shared.Models;
 
 public record Post
 {

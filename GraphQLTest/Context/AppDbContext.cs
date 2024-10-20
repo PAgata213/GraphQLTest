@@ -1,5 +1,6 @@
 ﻿
-using GraphQLTest.Models;
+using GraphQLTest.Shared.Models;
+
 using Microsoft.EntityFrameworkCore;
 namespace GraphQLTest.Context;
 

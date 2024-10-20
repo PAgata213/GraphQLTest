@@ -1,7 +1,6 @@
-﻿using GraphQLTest.Models;
+﻿using GraphQLTest.Shared.Models;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GraphQLTest.Context.EntityConfiguration;

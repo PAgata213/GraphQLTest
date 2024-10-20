@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GraphQLTest.Models;
+namespace GraphQLTest.Shared.Models;
 
 public record Comment
 {
