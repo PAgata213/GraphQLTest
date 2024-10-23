@@ -1,4 +1,4 @@
-﻿@using GraphQLTest.Client.GraphQL
+﻿@using GraphQLTest.Client.GQL
 @using GraphQLTest.Shared.Models
 @rendermode @(new InteractiveWebAssemblyRenderMode(false))
 
@@ -7,10 +7,48 @@
 
 <h3>Posts</h3>
 
+<button class="btn btn-primary" @onclick="LoadData">Load data</button>
+
+@if (_posts == null)
+{
+  <p><em>Loading...</em></p>
+}
+else
+{
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Comments count</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var post in _posts)
+      {
+        <tr>
+          <td>@post.Id</td>
+          <td>@post.Title</td>
+          <td>@post.Content</td>
+          <td>@post.CreationDateTime</td>
+          <td>@post.Comments.Count</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
 @code {
   IList<Post> _posts = [];
 
   protected override async Task OnInitializedAsync()
+  {
+    //_posts = await _postsService.GetPostsAsync();
+  }
+
+  private async Task LoadData()
   {
     _posts = await _postsService.GetPostsAsync();
   }

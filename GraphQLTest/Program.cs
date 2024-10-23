@@ -1,4 +1,4 @@
-using GraphQLTest.Client.GraphQL;
+using GraphQLTest.Client.GQL;
 using GraphQLTest.Components;
 using GraphQLTest.Context;
 using GraphQLTest.GraphQL;

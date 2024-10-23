@@ -1,4 +1,4 @@
-﻿using GraphQLTest.Client.GraphQL;
+﻿using GraphQLTest.Client.GQL;
 
 namespace GraphQLTest.Client.Pages;
 

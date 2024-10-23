@@ -2,7 +2,7 @@
 
 using GraphQLTest.Shared.Models;
 
-namespace GraphQLTest.Client.GraphQL;
+namespace GraphQLTest.Client.GQL;
 
 public interface IPostsGQLService
 {

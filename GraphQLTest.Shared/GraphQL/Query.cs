@@ -1,11 +1,11 @@
 ﻿using GraphQL.Query.Builder;
 using GraphQLTest.Shared.Models;
 
-namespace GraphQLTest.Shared.GraphQL;
+namespace GraphQLTest.Shared.GQL;
 public static class Query
 {
 	public static IQuery<Post> GetPosts
-		=> new Query<Post>("posts")
+		=> new Query<Post>("posts", new() { Formatter = GraphQL.Query.Builder.Formatter.NewtonsoftJson.NewtonsoftJsonPropertyNameFormatter.Format })
 			.AddField(q => q.Id)
 			.AddField(q => q.AuthorId)
 			.AddField(q => q.Title)

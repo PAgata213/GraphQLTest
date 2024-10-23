@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="GraphQL.Query.Builder" Version="2.2.0" />
+    <PackageReference Include="GraphQL.Query.Builder.Formatter.NewtonsoftJson" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
