@@ -1,7 +1,7 @@
 using GraphQLTest.Client.GQL;
 using GraphQLTest.Components;
 using GraphQLTest.Context;
-using GraphQLTest.GraphQL;
+using GraphQLTest.GQL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

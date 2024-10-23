@@ -3,6 +3,7 @@ using GraphQL.Client.Abstractions;
 using GraphQL.Query.Builder;
 
 using GraphQLTest.Client.Pages;
+using GraphQLTest.Shared.GQL;
 using GraphQLTest.Shared.GQL.Response;
 using GraphQLTest.Shared.Models;
 
@@ -14,7 +15,7 @@ public class PostsGQLService(IGraphQLClient _graphQLClient) : IPostsGQLService
 
 	public async Task<IList<Post>> GetPostsAsync(IQuery<Post>? query = null)
 	{
-		query ??= GraphQLTest.Shared.GQL.Query.GetPosts;
+		query ??= GraphQLTest.Shared.GQL.Query.GetPosts();
 		var request = new GraphQLRequest
 		{
 			Query = $"{{ {query.Build()} }}",
@@ -22,5 +23,17 @@ public class PostsGQLService(IGraphQLClient _graphQLClient) : IPostsGQLService
 
 		GraphQLResponse<GetPostsResponse> result = await _graphQLClient.SendQueryAsync<GetPostsResponse>(request);
 		return result.Data.Posts;
+	}
+
+	public async Task<Post?> GetPostByIdAsync(string id)
+	{
+		var query = GraphQLTest.Shared.GQL.Query.GetPostById(id);
+		var request = new GraphQLRequest
+		{
+			Query = $"{{ {query.Build()} }}",
+		};
+
+		GraphQLResponse<GetPostsResponse> result = await _graphQLClient.SendQueryAsync<GetPostsResponse>(request);
+		return result.Data.Posts?.FirstOrDefault();
 	}
 }

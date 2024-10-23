@@ -9,6 +9,7 @@
 
 <button class="btn btn-primary" @onclick="LoadData">Load data</button>
 
+<p><em> @_post?.Content </em></p>
 @if (_posts == null)
 {
   <p><em>Loading...</em></p>
@@ -42,14 +43,15 @@ else
 
 @code {
   IList<Post> _posts = [];
+  Post? _post = null;
 
   protected override async Task OnInitializedAsync()
   {
-    //_posts = await _postsService.GetPostsAsync();
+    _posts = await _postsService.GetPostsAsync();
   }
 
   private async Task LoadData()
   {
-    _posts = await _postsService.GetPostsAsync();
+    var post = await _postsService.GetPostByIdAsync(_posts.First().Id.ToString());
   }
 }
