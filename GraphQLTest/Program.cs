@@ -1,7 +1,8 @@
-using GraphQLTest.Client.GQL;
 using GraphQLTest.Components;
 using GraphQLTest.Context;
-using GraphQLTest.GQL;
+using GraphQLTest.GQL.Comments;
+using GraphQLTest.GQL.Posts;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,11 +18,16 @@ builder.Services.AddDbContext<AppDbContext>(o =>
 });
 
 builder.Services
-    .AddGraphQLServer()
-    .AddQueryType<QueryProvider>()
-    .AddFiltering()
-    .AddSorting()
-    .AddProjections();  // Mo¿liwe projekcje danych, np. selekcje tylko niektórych pól
+		.AddGraphQLServer()
+		.AddQueryType()
+		.AddType<CommentsQuery>()
+		.AddType<PostsQuery>()
+		.AddMutationType()
+		.AddType<PostMutations>()
+		.AddType<CommentMutations>()
+		.AddFiltering()
+		.AddSorting()
+		.AddProjections();
 
 var app = builder.Build();
 

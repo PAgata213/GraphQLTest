@@ -1,9 +1,12 @@
 ﻿using GraphQLTest.Context;
 using GraphQLTest.Shared.Models;
 
-namespace GraphQLTest.GQL;
+using HotChocolate.Internal;
 
-public class QueryProvider
+namespace GraphQLTest.GQL.Posts;
+
+[ExtendObjectType(HotChocolate.Language.OperationType.Query)]
+public class PostsQuery 
 {
 	//[UsePaging]
 	[UseProjection]
@@ -16,10 +19,4 @@ public class QueryProvider
 	{
 		return dbContext.Posts.Find(id);
 	}
-
-	//[UsePaging]
-	[UseProjection]
-	[UseFiltering]
-	[UseSorting]
-	public IQueryable<Comment> GetComments(AppDbContext dbContext) => dbContext.Comments;
 }
