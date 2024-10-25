@@ -7,10 +7,10 @@ namespace GraphQLTest.Shared.Models;
 public record Post
 {
 	[JsonProperty("id")]
-	public Guid Id { get; } = Guid.CreateVersion7();
+	public Guid Id { get; init; } = Guid.CreateVersion7();
 
 	[JsonProperty("creationDateTime")]
-	public DateTime CreationDateTime { get; } = DateTime.UtcNow;
+	public DateTime CreationDateTime { get; init; } = DateTime.UtcNow;
 
 	[JsonProperty("title")]
 	public string Title { get; set; } = default!;
